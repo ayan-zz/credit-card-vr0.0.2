@@ -1,0 +1,15 @@
+pandas
+numpy
+scikit-learn
+seaborn
+matplotlib
+setuptools
+dill
+flask
+touch
+pymongo
+datetime
+xlrd
+xgboost
+
+-e .
