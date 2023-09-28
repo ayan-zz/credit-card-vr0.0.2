@@ -29,6 +29,7 @@ class dataingestion:
             cursor=collection.find({})
             df=list(cursor)
             df=pd.DataFrame(df)
+            df=df.reset_index(drop=True)
             data=df.drop(columns=['_id'],axis=1)
             data.columns=data.iloc[0]
             data2=data.drop(df.index[0])
@@ -48,7 +49,7 @@ class dataingestion:
             train_set,test_set=train_test_split(data2,test_size=0.20,random_state=42)
             train_set.to_csv(self.ingestion_config.train_path,index=False)
             test_set.to_csv(self.ingestion_config.test_path,index=False)
-
+            #print(train_set.head())
             logging.info('train and test data had been uploaded to artifacts')
 
             return(self.ingestion_config.train_path,self.ingestion_config.test_path)
@@ -56,9 +57,5 @@ class dataingestion:
         except Exception as e:
             raise CustomException(e,sys)
         
-
-if __name__=="__main__":
-    obj=dataingestion()
-    train_data,test_data=obj.initiate_data_ingestion()
 
 
