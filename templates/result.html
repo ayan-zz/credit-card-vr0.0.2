@@ -1,0 +1,151 @@
+<html>
+<body>
+    <div class="login">
+       <h1>Credit Card Default Prediction</h1>
+       
+       <form action="{{ url_for('predict_datapoint')}}" method="POST">
+        <h2>Enter the records</h2>
+        <form>
+        <div class="mb-3">
+            <label class="form-label">ID</label>
+            <input class="form-control" type="number" name="ID" placeholder="Enter ID" />
+            
+            <label class="form-label">SEX</label>
+            <select class="form-control" name="SEX" placeholder="Enter SEX" required>
+                 <option class="placeholder" selected disabled value="">Select SEX</option>
+                 <option value='1'>
+                     MALE
+                 </option>
+                 <option value='2'>
+                     FEMALE
+                 </option>
+             </select>
+             <label class="form-label">EDUCATION</label>
+             <select class="form-control" name="EDUCATION" placeholder="Enter EDUCATION" required>
+                 <option class="placeholder" selected disabled value="">Select EDUCATION</option>
+                 <option value='1'>
+                     GRAD SCHOOL
+                 </option>
+                 <option value='2'>
+                     UNIVERSITY
+                 </option>
+                 <option value='3'>
+                     HIGHSCHOOL
+                 </option>
+                 <option value='4'>
+                     OTHERS
+                 </option>
+             </select>
+             <label class="form-label">MARRIAGE</label>
+             <select class="form-control" name="MARRIAGE" placeholder="Enter MARRIAGE" required>
+                 <option class="placeholder" selected disabled value="">Select MARRIAGE</option>
+                 <option value='1'>
+                     MARRIED
+                 </option>
+                 <option value='2'>
+                     SINGLE
+                 </option>
+                 <option value='3'>
+                     OTHERS
+                 </option>
+             </select>
+             <label class="AGE">AGE</label>
+             <input class="form-control" type="number" name="AGE" placeholder="AGE" min='1' max='100' />
+        </div>
+        </form>
+        <form>
+            <div class ="mb-9">
+                <label class="form-label">LIMIT_BAL</label>
+                <input class="form-control" type="number" name="LIMIT_BAL"placeholder="Enter the Limit" min='0' max='100000000' />   
+            </div>
+        </form>
+        <form>
+            <div class ="mb-10">
+                <label class ="PAY_0">PAY_0</label>
+                <input class="form-control" type ="number" name="PAY_0" placeholder="Enter PAY_0" />
+                <label class="PAY_2">PAY_2</label>
+                <input class="form-control" type="number"  name="PAY_2"
+                placeholder="Enter PAY_2" />
+                <label class="PAY_3">PAY_3</label>
+                <input class="form-control" type="number" name="PAY_3"
+                placeholder="Enter PAY_3" />
+                <label class="PAY_4">PAY_4</label>
+                <input class="form-control" type="number" name="PAY_4"
+                placeholder="Enter PAY_4" />           
+                <label class="PAY_5">PAY_5</label>
+                <input class="form-control" type="number" name="PAY_5"
+                placeholder="Enter PAY_5" />
+                <div>
+                <label class="PAY_6">PAY_6</label>
+                <input class="form-control smaller-input" type="number" name="PAY_6"
+                placeholder="Enter PAY_6" />
+                </div>
+            </div>
+        </form>
+        <form>
+            <div>
+            <label class="BILL_AMT1">BILL_AMT1</label>
+            <input class="form-control" type="number" name="BILL_AMT1"
+            placeholder="Enter BILL_AMT1" />
+            <label class="BILL_AMT2">BILL_AMT2</label>
+            <input class="form-control" type="number" name="BILL_AMT2"
+            placeholder="Enter BILL_AMT2" />
+            <label class="BILL_AMT3">BILL_AMT3</label>
+            <input class="form-control" type="number" name="BILL_AMT3"
+            placeholder="Enter BILL_AMT3" />
+            <label class="BILL_AMT4">BILL_AMT4</label>
+            <input class="form-control" type="number" name="BILL_AMT4"
+            placeholder="Enter BILL_AMT4" />
+            <div>
+                <label class="BILL_AMT5">BILL_AMT5</label>
+                <input class="form-control" type="number" name="BILL_AMT5"
+                placeholder="Enter BILL_AM5" />
+                <label class="BILL_AMT6">BILL_AMT6</label>
+                <input class="form-control" type="number" name="BILL_AMT6"
+                placeholder="Enter BILL_AM6" />
+            </div>
+            </div>
+        </form>
+        <form>
+            <div class="mb-3">
+            <label class="PAY_AMT1">PAY_AMT1</label>
+            <input class="form-control" type="number" name="PAY_AMT1"
+            placeholder="Enter PAY_AMT1" />
+            </div>
+            <div class="mb-3">
+            <label class="PAY_AMT2">PAY_AMT2</label>
+            <input class="form-control" type="number" name="PAY_AMT2"
+            placeholder="Enter PAY_AMT2" />
+            </div>
+            <div class="mb-3">
+            <label class="PAY_AMT3">PAY_AMT3</label>
+            <input class="form-control" type="number" name="PAY_AMT3"
+            placeholder="Enter PAY_AMT3" />
+            </div>
+            <div class="mb-3">
+            <label class="PAY_AMT4">PAY_AMT4</label>
+            <input class="form-control" type="number" name="PAY_AMT4"
+            placeholder="Enter PAY_AMT4" />
+            </div>
+            <div class="mb-3">
+            <label class="PAY_AMT5">PAY_AMT5</label>
+            <input class="form-control" type="number" name="PAY_AMT5"
+            placeholder="Enter PAY_AMT5" />
+            </div>
+            <div class="mb-3">
+            <label class="PAY_AMT6">PAY_AMT6</label>
+            <input class="form-control" type="number" name="PAY_AMT6"
+            placeholder="Enter PAY_AMT6" />
+            </div>
+        </form>
+            <div class="mb-3">
+            <div class="mb-3">
+                <input class="btn btn-primary" type="submit" value="Predict Default" required />
+            </div>
+       </form>
+    </div>
+    <h2>
+        THE PREDICTION FOR DEFAULT OF CREDIT CARD CLIENT IS {{results}}
+    </h2>
+</body>
+</html>
