@@ -50,11 +50,11 @@ def predict_datapoint():
         print(pred_df)
 
         predict_pipeline=PredictPipeline()
-        results=predict_pipeline.predict(pred_df)
+        result=predict_pipeline.predict(pred_df)
 
-        #categories={0:'NOT TRUE',1:'TRUE'}
+        categories={0:'NOT TRUE',1:'TRUE'}
         
-        #results = categories[result[0]]
+        results = categories[result[0]]
         
         
         
@@ -62,7 +62,7 @@ def predict_datapoint():
         return render_template("result.html",results=results)
 
 if __name__=="__main__":
-    app.run(host="0.0.0.0",port=5000)
+    app.run(host="0.0.0.0",debug=True,port=5000)
     
     
     
