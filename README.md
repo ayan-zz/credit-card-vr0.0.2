@@ -1,4 +1,4 @@
-Data Description
+## Data Description
 The first group of variables contains information about the client personal information: 
 1. ID: ID of each client, categorical variable 
 2. LIMIT_BAL: Amount of given credit in NT dollars (includes individual and family/supplementary credit) 
@@ -36,3 +36,97 @@ The last variable is the one to be predicted:
 default.payment.next.month: indicate whether the credit card holders are defaulters or non-defaulters 
 1=yes, 
 0=no
+
+#### EDA Observations:
+1. The default payment is maximum for credit limit below 370000 
+2. The default payment is generally seen after 2.5 years for any maaximum of cases 
+3. Maximum default payment along with bill payment is found in the region within 500000
+4. Age group of above 24 yrs and below 40 yrs have maximum default with average count of 300
+5. Highest default happend for credit limit of 50k
+
+## 1. TRAINING MODEL: LOGISTIC REGRESSION
+## 2. HYPER PARAMETER TUNNING USING GRID SEARCHCV
+## 3. AUC/ROC CURVE AND SCORES
+
+Penalty and Solver
+solver: {‘lbfgs’, ‘liblinear’, ‘newton-cg’, ‘newton-cholesky’, ‘sag’, ‘saga’}, default=’lbfgs’ Algorithm to use in the optimization problem. Default is ‘lbfgs’. To choose a solver, you might want to consider the following aspects:
+
+For small datasets, ‘liblinear’ is a good choice, whereas ‘sag’ and ‘saga’ are faster for large ones;
+
+For multiclass problems, only ‘newton-cg’, ‘sag’, ‘saga’ and ‘lbfgs’ handle multinomial loss;
+
+‘liblinear’ is limited to one-versus-rest schemes.
+
+‘newton-cholesky’ is a good choice for n_samples >> n_features, especially with one-hot encoded categorical features with rare categories. Note that it is limited to binary classification and the one-versus-rest reduction for multiclass classification. Be aware that the memory usage of this solver has a quadratic dependency on n_features because it explicitly computes the Hessian matrix.
+
+Warning The choice of the algorithm depends on the penalty chosen.
+
+Supported penalties by solver:
+
+‘lbfgs’ - [‘l2’, None]
+
+‘liblinear’ - [‘l1’, ‘l2’]
+
+‘newton-cg’ - [‘l2’, None]
+
+‘newton-cholesky’ - [‘l2’, None]
+
+‘sag’ - [‘l2’, None]
+
+‘saga’ - [‘elasticnet’, ‘l1’, ‘l2’, None]
+
+penalty{‘l1’, ‘l2’, ‘elasticnet’, None}, default=’l2’ Specify the norm of the penalty:
+
+None: no penalty is added;
+
+'l2': add a L2 penalty term and it is the default choice;
+
+'l1': add a L1 penalty term;
+
+'elasticnet': both L1 and L2 penalty terms are added.
+
+![conf-1](https://github.com/ayan-zz/credit-card-vr0.0.2/assets/64850346/0c9b2d4e-11aa-4d84-883d-53763ac69a31)
+
+
+## Other models analysed:
+*1. Random Forest*
+*2. XbBoost*
+*3. CatBoost*
+
+### Best Model
+**best_model= XGBoost**
+
+**Accuracy= 0.8205**
+
+**F1-score=0.45797684952189227**
+
+##  roc_curve and roc_auc_scores
+
+#### ROC: Receiver Operator Characteristic 
+###### ROC_CURVE: Basically, ROC curve is a graph that shows the performance of a classification model at all possible thresholds( threshold is a particular value beyond which you say a point belongs to a particular class). The curve is plotted between two parameters TRUE POSITIVE RATE(TPR) and FALSE POSITIVE RATE(FPR) 
+
+#### AUC: Area Under Curve
+##### ROC_AUC_SCORES: AUC measures how well a model is able to distinguish between classes. ROC_AUC_SCORES defines the amount of tries to measure if the rank ordering of classifications is correct it does not take into account actually predicted probabilities
+
+#### Precision_Recall_Curve
+###### Precision is the proportion of correct positive classifications (true positive) divided by the total number of predicted positive classifications that were made (true positive + false positive). Recall is the proportion correct positive classifications (true positive) divided by the total number of the truly positive classifications (true positive + false negative).
+
+######    A PR curve is simply a graph with Precision values on the y-axis and Recall values on the x-axis. In other words, the PR curve contains TP/(TP+FP) on the y-axis and TP/(TP+FN) on the x-axis.
+
+
+![aoc-roc](https://github.com/ayan-zz/credit-card-vr0.0.2/assets/64850346/3bc056e1-a2c6-497f-8116-5c04be4c3541)
+
+
+
+### FPR = TP/(TN+FP)
+### TPR / Recall = TP/(TP+FN)
+###  Precision = TP/(TP+FP)
+
+##### ROC-AUC does not work well under severe imbalance in the dataset because Denominator of FPR has a True Negatives as one factor since Negative Class is in majority the denominator of FPR is dominated by True Negatives which makes FPR less sensitive to any changes in minority class predictions. To overcome this, Precision-Recall Curves are used instead of ROC and then the AUC is calculated
+
+
+## Result and Discussions
+1. The target dataset is completely imbalanced which again proves the call for precision/recall.
+2. There are number of client who are/may default next month are not considered. 
+3. After cosidering f-1 score in grid search cv, we have increased value of FP and FN and also decreased TN.
+4. Decrease in TN shows that number of minority class has been predicted correctly into FP or FP.
