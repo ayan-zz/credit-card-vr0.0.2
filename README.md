@@ -130,3 +130,32 @@ None: no penalty is added;
 2. There are number of client who are/may default next month are not considered. 
 3. After cosidering f-1 score in grid search cv, we have increased value of FP and FN and also decreased TN.
 4. Decrease in TN shows that number of minority class has been predicted correctly into FP or FP.
+
+
+## Architecture
+**Model Training / Validation Workflows**
+
+![image](https://github.com/ayan-zz/credit-card-vr0.0.2/assets/64850346/391d30d5-64c5-4a3a-905a-63d8f2f6c17d)
+
+**User I/O Workflow**
+
+![image](https://github.com/ayan-zz/credit-card-vr0.0.2/assets/64850346/50a40d63-692c-4814-b99d-a0b56c7d11a4)
+
+## Wireframes
+**Index/Welcome Page**
+
+This page will provide the index, necessary information like meta-data, other details can be mentioned about the project. We don’t have any option for user input here.
+The page will look like following:
+
+![image](https://github.com/ayan-zz/credit-card-vr0.0.2/assets/64850346/b8a2ee7b-aa74-47fb-a687-7615763c7264)
+
+**Home Page**
+
+On proceeding to the home page, we will encounter a form which will request to fill the necessary input or select from the drop down from the user. The form will also guide to different types of values and their imitations.
+The home page will be in following format:
+
+![image](https://github.com/ayan-zz/credit-card-vr0.0.2/assets/64850346/ee07538b-cdc2-456b-9c4e-f91c85362741)
+
+On click of Submission or Predict Default button in home page after filling the details it will provide the predicted result. 
+
+![image](https://github.com/ayan-zz/credit-card-vr0.0.2/assets/64850346/d20d4b26-5a19-4fab-a093-aa2cc5d4e99d)
