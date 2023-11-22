@@ -44,7 +44,7 @@ default.payment.next.month: indicate whether the credit card holders are default
 4. Age group of above 24 yrs and below 40 yrs have maximum default with average count of 300
 5. Highest default happend for credit limit of 50k
 
-## 1. TRAINING MODEL: LOGISTIC REGRESSION
+## 1. TRAINING MODEL: LOGISTIC REGRESSION / RANDOM FOREST / XGBOOST 
 ## 2. HYPER PARAMETER TUNNING USING GRID SEARCHCV
 ## 3. AUC/ROC CURVE AND SCORES
 
@@ -140,6 +140,13 @@ None: no penalty is added;
 **User I/O Workflow**
 
 ![image](https://github.com/ayan-zz/credit-card-vr0.0.2/assets/64850346/50a40d63-692c-4814-b99d-a0b56c7d11a4)
+
+# DEPLOYMENT LINKS:
+**Welcome Page**
+http://54.210.37.138:5000
+
+**Prediction/ Result Page**
+http://54.210.37.138:5000/predictdata
 
 ## Wireframes
 **Index/Welcome Page**
